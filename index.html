@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,6 +29,7 @@
 	<script src="./lib/BinaryHeap.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.5.0/proj4.js"></script>
 	<script src="https://threejs.org/examples/js/loaders/OBJLoader.js"></script>
+	<script src="https://threejs.org/examples/js/loaders/MTLLoader.js"></script>
 	<script src="https://threejs.org/examples/js/loaders/PLYLoader.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.3.8/jstree.min.js"></script>
 	<script src="./lib/potree/potree.js"></script>
@@ -56,7 +58,7 @@
 		});
 
 		// 16
-		Potree.loadPointCloud("https://raw.githubusercontent.com/persakwurmfeld/recGfC9dBhvEjpG3r/master/cloud.js", "6_w77th_CONTEXT", function (e) {
+		Potree.loadPointCloud("https://raw.githubusercontent.com/persakwurmfeld/recZkkqefkFr2A999/master/cloud.js", "6_w77th_CONTEXT", function (e) {
 			viewer.scene.addPointCloud(e.pointcloud);
 
 			let material = e.pointcloud.material;
@@ -66,7 +68,7 @@
 			viewer.fitToScreen();
         });
 
-		Potree.loadPointCloud("https://raw.githubusercontent.com/persakwurmfeld/recqXFXtwMYRmA6r7/master/cloud.js", "6_w77th_FACADE", function (e) {
+		Potree.loadPointCloud("https://raw.githubusercontent.com/persakwurmfeld/recMJPfl9qNivHhW6/master/cloud.js", "6_w77th_FACADE", function (e) {
 			viewer.scene.addPointCloud(e.pointcloud);
 
 			let material = e.pointcloud.material;
@@ -76,7 +78,7 @@
 			viewer.fitToScreen();
         });
 
-		Potree.loadPointCloud("https://raw.githubusercontent.com/persakwurmfeld/recKEBOESGJ5EppAv/master/cloud.js", "6_w77th_PENTHOUSE", function (e) {
+		Potree.loadPointCloud("https://raw.githubusercontent.com/persakwurmfeld/recmBmP0ugivx8Ghs/master/cloud.js", "6_w77th_PENTHOUSE_EXT", function (e) {
 			viewer.scene.addPointCloud(e.pointcloud);
 
 			let material = e.pointcloud.material;
@@ -86,7 +88,29 @@
 			viewer.fitToScreen();
         });
 
-		Potree.loadPointCloud("https://raw.githubusercontent.com/persakwurmfeld/rec2KQHDdQ0jwslKY/master/cloud.js", "6_w77th_SHAFT", function (e) {
+		Potree.loadPointCloud("https://raw.githubusercontent.com/persakwurmfeld/recnUabphYLem9jen/master/cloud.js", "6_w77th_PENTHOUSE_INT_TOP", function (e) {
+			viewer.scene.addPointCloud(e.pointcloud);
+
+			let material = e.pointcloud.material;
+			material.size = 1;
+			material.pointSizeType = Potree.PointSizeType.ADAPTIVE;
+
+			viewer.fitToScreen();
+		});
+
+
+		Potree.loadPointCloud("https://raw.githubusercontent.com/persakwurmfeld/recWUYvswnSG1P6Jt/master/cloud.js", "6_w77th_PENTHOUSE_INT_BTM", function (e) {
+			viewer.scene.addPointCloud(e.pointcloud);
+
+			let material = e.pointcloud.material;
+			material.size = 1;
+			material.pointSizeType = Potree.PointSizeType.ADAPTIVE;
+
+			viewer.fitToScreen();
+		});
+
+
+		Potree.loadPointCloud("https://raw.githubusercontent.com/persakwurmfeld/recYj5rNmnTUrz74O/master/cloud.js", "6_w77th_PENTHOUSE_SHAFT", function (e) {
 			viewer.scene.addPointCloud(e.pointcloud);
 
 			let material = e.pointcloud.material;
@@ -97,6 +121,96 @@
 		});
 
 		const loader = new THREE.PLYLoader()
+
+		loader.load('https://raw.githubusercontent.com/persakwurmfeld/recQp6YtFxx6LhJ2Z/master/fp_exterior.ply', (geometry) => {
+
+			geometry.computeVertexNormals();
+
+			var material = new THREE.MeshStandardMaterial({ color: "#7FEFBD", flatShading: true, side: THREE.doubleSide });
+
+			var mesh = new THREE.Mesh(geometry, material);
+
+			mesh.scale.multiplyScalar(0.0254);
+
+			mesh.material.side = THREE.doubleSide;
+
+			mesh.castShadow = true;
+			mesh.receiveShadow = true;
+			viewer.scene.scene.add(mesh);
+
+			// Add entries to object list in sidebar
+			let tree = $(`#jstree_scene`);
+			let parentNode = "other";
+
+			let node = tree.jstree('create_node', parentNode, {
+				"text": "FP EXT",
+				"icon": `${Potree.resourcePath}/icons/triangle.svg`,
+				"data": mesh
+			},
+				"last", false, false);
+
+			tree.jstree(mesh.visible ? "check_node" : "uncheck_node", node);
+		})
+
+		loader.load('https://raw.githubusercontent.com/persakwurmfeld/recQp6YtFxx6LhJ2Z/master/fp_interior.ply', (geometry) => {
+
+			geometry.computeVertexNormals();
+
+			var material = new THREE.MeshStandardMaterial({ color: "#9DD1F1", flatShading: true, side: THREE.doubleSide });
+
+			var mesh = new THREE.Mesh(geometry, material);
+
+			mesh.scale.multiplyScalar(0.0254);
+
+			mesh.material.side = THREE.doubleSide;
+
+			mesh.castShadow = true;
+			mesh.receiveShadow = true;
+			viewer.scene.scene.add(mesh);
+
+			// Add entries to object list in sidebar
+			let tree = $(`#jstree_scene`);
+			let parentNode = "other";
+
+			let node = tree.jstree('create_node', parentNode, {
+				"text": "FP INT",
+				"icon": `${Potree.resourcePath}/icons/triangle.svg`,
+				"data": mesh
+			},
+				"last", false, false);
+
+			tree.jstree(mesh.visible ? "check_node" : "uncheck_node", node);
+		})
+
+		loader.load('https://raw.githubusercontent.com/persakwurmfeld/reci5ymagapyWPwQZ/master/100_structure.ply', (geometry) => {
+
+			geometry.computeVertexNormals();
+
+			var material = new THREE.MeshStandardMaterial({ color: "#444444", flatShading: true, side: THREE.doubleSide });
+
+			var mesh = new THREE.Mesh(geometry, material);
+
+			mesh.scale.multiplyScalar(0.0254);
+
+			mesh.material.side = THREE.doubleSide;
+
+			mesh.castShadow = true;
+			mesh.receiveShadow = true;
+			viewer.scene.scene.add(mesh);
+
+			// Add entries to object list in sidebar
+			let tree = $(`#jstree_scene`);
+			let parentNode = "other";
+
+			let node = tree.jstree('create_node', parentNode, {
+				"text": "100 - STRUCTURE",
+				"icon": `${Potree.resourcePath}/icons/triangle.svg`,
+				"data": mesh
+			},
+				"last", false, false);
+
+			tree.jstree(mesh.visible ? "check_node" : "uncheck_node", node);
+		})
 
 		loader.load('https://raw.githubusercontent.com/persakwurmfeld/reci5ymagapyWPwQZ/master/100_structure.ply', (geometry) => {
 
@@ -218,6 +332,91 @@
 
 			tree.jstree(mesh.visible ? "check_node" : "uncheck_node", node);
 		})
+
+				var mtlLoader = new THREE.MTLLoader();
+		mtlLoader.load('https://raw.githubusercontent.com/persakwurmfeld/reci5ymagapyWPwQZ/master/structure.mtl', function (materials) {
+
+			materials.preload();
+
+			var objLoader = new THREE.OBJLoader();
+
+			objLoader.setMaterials(materials);
+			objLoader.load('https://raw.githubusercontent.com/persakwurmfeld/reci5ymagapyWPwQZ/master/structure.obj', function (object) {
+			object.scale.multiplyScalar(0.0254);
+				// object.position.y = - 95;
+				viewer.scene.scene.add(object);
+
+			let tree = $(`#jstree_scene`);
+			let parentNode = "other";
+
+			let node = tree.jstree('create_node', parentNode, {
+				"text": "Overlay_STRUCTURE",
+				"icon": `${Potree.resourcePath}/icons/triangle.svg`,
+				"data": object
+			},
+				"last", false, false);
+
+			tree.jstree(object.visible ? "check_node" : "uncheck_node", node);
+
+			}, console.log, console.log);
+
+		});
+
+		mtlLoader.load('https://raw.githubusercontent.com/persakwurmfeld/reci5ymagapyWPwQZ/master/section.mtl', function (materials) {
+
+			materials.preload();
+
+			var objLoader = new THREE.OBJLoader();
+
+			objLoader.setMaterials(materials);
+			objLoader.load('https://raw.githubusercontent.com/persakwurmfeld/reci5ymagapyWPwQZ/master/section.obj', function (object) {
+			object.scale.multiplyScalar(0.0254);
+				// object.position.y = - 95;
+				viewer.scene.scene.add(object);
+
+			let tree = $(`#jstree_scene`);
+			let parentNode = "other";
+
+			let node = tree.jstree('create_node', parentNode, {
+				"text": "Overlay_SECTION",
+				"icon": `${Potree.resourcePath}/icons/triangle.svg`,
+				"data": object
+			},
+				"last", false, false);
+
+			tree.jstree(object.visible ? "check_node" : "uncheck_node", node);
+
+			}, console.log, console.log);
+
+		});
+
+		mtlLoader.load('https://raw.githubusercontent.com/persakwurmfeld/reci5ymagapyWPwQZ/master/typical_floor.mtl', function (materials) {
+
+			materials.preload();
+
+			var objLoader = new THREE.OBJLoader();
+
+			objLoader.setMaterials(materials);
+			objLoader.load('https://raw.githubusercontent.com/persakwurmfeld/reci5ymagapyWPwQZ/master/typical_floor.obj', function (object) {
+			object.scale.multiplyScalar(0.0254);
+				// object.position.y = - 95;
+				viewer.scene.scene.add(object);
+
+			let tree = $(`#jstree_scene`);
+			let parentNode = "other";
+
+			let node = tree.jstree('create_node', parentNode, {
+				"text": "Overlay_TYP_Floor",
+				"icon": `${Potree.resourcePath}/icons/triangle.svg`,
+				"data": object
+			},
+				"last", false, false);
+
+			tree.jstree(object.visible ? "check_node" : "uncheck_node", node);
+
+			}, console.log, console.log);
+
+		});
 	</script>
 </body>
 
