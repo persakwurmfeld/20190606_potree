@@ -88,7 +88,7 @@
 			viewer.fitToScreen();
         });
 
-		Potree.loadPointCloud("https://raw.githubusercontent.com/persakwurmfeld/recnUabphYLem9jen/master/cloud.js", "w77th_PH_INT_TOP", function (e) {
+		Potree.loadPointCloud("https://raw.githubusercontent.com/persakwurmfeld/recnUabphYLem9jen/master/cloud.js", "w77th_PH_16TH", function (e) {
 			viewer.scene.addPointCloud(e.pointcloud);
 
 			let material = e.pointcloud.material;
@@ -99,7 +99,7 @@
 		});
 
 
-		Potree.loadPointCloud("https://raw.githubusercontent.com/persakwurmfeld/recWUYvswnSG1P6Jt/master/cloud.js", "w77th_PH_INT_BTM", function (e) {
+		Potree.loadPointCloud("https://raw.githubusercontent.com/persakwurmfeld/recWUYvswnSG1P6Jt/master/cloud.js", "w77th_PH_17TH", function (e) {
 			viewer.scene.addPointCloud(e.pointcloud);
 
 			let material = e.pointcloud.material;
@@ -370,7 +370,7 @@
 			objLoader.setMaterials(materials);
 			objLoader.load('https://raw.githubusercontent.com/persakwurmfeld/recQp6YtFxx6LhJ2Z/master/typical_floor.obj', function (object) {
 			object.scale.multiplyScalar(0.0254);
-				// object.position.y = - 95;
+				object.position.z = 0;
 				viewer.scene.scene.add(object);
 
 			let tree = $(`#jstree_scene`);
