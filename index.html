@@ -56,7 +56,37 @@
 		});
 
 		// 16
-		Potree.loadPointCloud("https://raw.githubusercontent.com/persakwurmfeld/recpeXOLPUGHGisXZ/master/cloud.js", "6 w77th St", function (e) {
+		Potree.loadPointCloud("https://raw.githubusercontent.com/persakwurmfeld/recGfC9dBhvEjpG3r/master/cloud.js", "6_w77th_CONTEXT", function (e) {
+			viewer.scene.addPointCloud(e.pointcloud);
+
+			let material = e.pointcloud.material;
+			material.size = 1;
+			material.pointSizeType = Potree.PointSizeType.ADAPTIVE;
+
+			viewer.fitToScreen();
+        });
+
+		Potree.loadPointCloud("https://raw.githubusercontent.com/persakwurmfeld/recqXFXtwMYRmA6r7/master/cloud.js", "6_w77th_FACADE", function (e) {
+			viewer.scene.addPointCloud(e.pointcloud);
+
+			let material = e.pointcloud.material;
+			material.size = 1;
+			material.pointSizeType = Potree.PointSizeType.ADAPTIVE;
+
+			viewer.fitToScreen();
+        });
+
+		Potree.loadPointCloud("https://raw.githubusercontent.com/persakwurmfeld/recKEBOESGJ5EppAv/master/cloud.js", "6_w77th_PENTHOUSE", function (e) {
+			viewer.scene.addPointCloud(e.pointcloud);
+
+			let material = e.pointcloud.material;
+			material.size = 1;
+			material.pointSizeType = Potree.PointSizeType.ADAPTIVE;
+
+			viewer.fitToScreen();
+        });
+
+		Potree.loadPointCloud("https://raw.githubusercontent.com/persakwurmfeld/rec2KQHDdQ0jwslKY/master/cloud.js", "6_w77th_SHAFT", function (e) {
 			viewer.scene.addPointCloud(e.pointcloud);
 
 			let material = e.pointcloud.material;
