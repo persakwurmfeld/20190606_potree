@@ -58,7 +58,7 @@
 		});
 
 		// 16
-		Potree.loadPointCloud("https://raw.githubusercontent.com/persakwurmfeld/recZkkqefkFr2A999/master/cloud.js", "6_w77th_CONTEXT", function (e) {
+		Potree.loadPointCloud("https://raw.githubusercontent.com/persakwurmfeld/recZkkqefkFr2A999/master/cloud.js", "w77th_CONTEXT", function (e) {
 			viewer.scene.addPointCloud(e.pointcloud);
 
 			let material = e.pointcloud.material;
@@ -68,7 +68,7 @@
 			viewer.fitToScreen();
         });
 
-		Potree.loadPointCloud("https://raw.githubusercontent.com/persakwurmfeld/recMJPfl9qNivHhW6/master/cloud.js", "6_w77th_FACADE", function (e) {
+		Potree.loadPointCloud("https://raw.githubusercontent.com/persakwurmfeld/recMJPfl9qNivHhW6/master/cloud.js", "w77th_FACADE", function (e) {
 			viewer.scene.addPointCloud(e.pointcloud);
 
 			let material = e.pointcloud.material;
@@ -78,7 +78,7 @@
 			viewer.fitToScreen();
         });
 
-		Potree.loadPointCloud("https://raw.githubusercontent.com/persakwurmfeld/recmBmP0ugivx8Ghs/master/cloud.js", "6_w77th_PENTHOUSE_EXT", function (e) {
+		Potree.loadPointCloud("https://raw.githubusercontent.com/persakwurmfeld/recmBmP0ugivx8Ghs/master/cloud.js", "w77th_PH_EXT", function (e) {
 			viewer.scene.addPointCloud(e.pointcloud);
 
 			let material = e.pointcloud.material;
@@ -88,7 +88,7 @@
 			viewer.fitToScreen();
         });
 
-		Potree.loadPointCloud("https://raw.githubusercontent.com/persakwurmfeld/recnUabphYLem9jen/master/cloud.js", "6_w77th_PENTHOUSE_INT_TOP", function (e) {
+		Potree.loadPointCloud("https://raw.githubusercontent.com/persakwurmfeld/recnUabphYLem9jen/master/cloud.js", "w77th_PH_INT_TOP", function (e) {
 			viewer.scene.addPointCloud(e.pointcloud);
 
 			let material = e.pointcloud.material;
@@ -99,7 +99,7 @@
 		});
 
 
-		Potree.loadPointCloud("https://raw.githubusercontent.com/persakwurmfeld/recWUYvswnSG1P6Jt/master/cloud.js", "6_w77th_PENTHOUSE_INT_BTM", function (e) {
+		Potree.loadPointCloud("https://raw.githubusercontent.com/persakwurmfeld/recWUYvswnSG1P6Jt/master/cloud.js", "w77th_PH_INT_BTM", function (e) {
 			viewer.scene.addPointCloud(e.pointcloud);
 
 			let material = e.pointcloud.material;
@@ -110,7 +110,7 @@
 		});
 
 
-		Potree.loadPointCloud("https://raw.githubusercontent.com/persakwurmfeld/recYj5rNmnTUrz74O/master/cloud.js", "6_w77th_PENTHOUSE_SHAFT", function (e) {
+		Potree.loadPointCloud("https://raw.githubusercontent.com/persakwurmfeld/recYj5rNmnTUrz74O/master/cloud.js", "w77th_PH_SHAFT", function (e) {
 			viewer.scene.addPointCloud(e.pointcloud);
 
 			let material = e.pointcloud.material;
@@ -143,7 +143,7 @@
 			let parentNode = "other";
 
 			let node = tree.jstree('create_node', parentNode, {
-				"text": "FP EXT",
+				"text": "FP_EXT",
 				"icon": `${Potree.resourcePath}/icons/triangle.svg`,
 				"data": mesh
 			},
@@ -173,7 +173,7 @@
 			let parentNode = "other";
 
 			let node = tree.jstree('create_node', parentNode, {
-				"text": "FP INT",
+				"text": "FP_INT",
 				"icon": `${Potree.resourcePath}/icons/triangle.svg`,
 				"data": mesh
 			},
@@ -181,6 +181,7 @@
 
 			tree.jstree(mesh.visible ? "check_node" : "uncheck_node", node);
 		})
+
 
 		loader.load('https://raw.githubusercontent.com/persakwurmfeld/reci5ymagapyWPwQZ/master/100_structure.ply', (geometry) => {
 
@@ -203,37 +204,7 @@
 			let parentNode = "other";
 
 			let node = tree.jstree('create_node', parentNode, {
-				"text": "100 - STRUCTURE",
-				"icon": `${Potree.resourcePath}/icons/triangle.svg`,
-				"data": mesh
-			},
-				"last", false, false);
-
-			tree.jstree(mesh.visible ? "check_node" : "uncheck_node", node);
-		})
-
-		loader.load('https://raw.githubusercontent.com/persakwurmfeld/reci5ymagapyWPwQZ/master/100_structure.ply', (geometry) => {
-
-			geometry.computeVertexNormals();
-
-			var material = new THREE.MeshStandardMaterial({ color: "#444444", flatShading: true, side: THREE.doubleSide });
-
-			var mesh = new THREE.Mesh(geometry, material);
-
-			mesh.scale.multiplyScalar(0.0254);
-
-			mesh.material.side = THREE.doubleSide;
-
-			mesh.castShadow = true;
-			mesh.receiveShadow = true;
-			viewer.scene.scene.add(mesh);
-
-			// Add entries to object list in sidebar
-			let tree = $(`#jstree_scene`);
-			let parentNode = "other";
-
-			let node = tree.jstree('create_node', parentNode, {
-				"text": "100 - STRUCTURE",
+				"text": "100_STRUCTURE",
 				"icon": `${Potree.resourcePath}/icons/triangle.svg`,
 				"data": mesh
 			},
@@ -263,7 +234,7 @@
 			let parentNode = "other";
 
 			let node = tree.jstree('create_node', parentNode, {
-				"text": "600 - INTERIOR OUTFITTING",
+				"text": "600_INT_OUTFIT",
 				"icon": `${Potree.resourcePath}/icons/triangle.svg`,
 				"data": mesh
 			},
@@ -294,7 +265,7 @@
 			let parentNode = "other";
 
 			let node = tree.jstree('create_node', parentNode, {
-				"text": "700 - EXTERIOR OUTFITTING",
+				"text": "700_EXTERIOR_OUTFIT",
 				"icon": `${Potree.resourcePath}/icons/triangle.svg`,
 				"data": mesh
 			},
@@ -324,7 +295,7 @@
 			let parentNode = "other";
 
 			let node = tree.jstree('create_node', parentNode, {
-				"text": "500 - AUXILIARY SYSTEMS",
+				"text": "500_AUX_SYSTEMS",
 				"icon": `${Potree.resourcePath}/icons/triangle.svg`,
 				"data": mesh
 			},
